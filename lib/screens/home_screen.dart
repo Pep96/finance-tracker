@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import '../models/transaction.dart';
 import '../providers/transaction_provider.dart';
 import '../widgets/summary_cards.dart';
 import '../widgets/expense_pie_chart.dart';
@@ -103,7 +104,7 @@ class _OverviewTab extends StatelessWidget {
 }
 
 class _TransactionsTab extends StatelessWidget {
-  final List transactions;
+  final List<Transaction> transactions;
   const _TransactionsTab({required this.transactions});
 
   @override
@@ -126,7 +127,7 @@ class _TransactionsTab extends StatelessWidget {
     return ListView.builder(
       padding: const EdgeInsets.only(bottom: 80),
       itemCount: transactions.length,
-      itemBuilder: (_, i) => TransactionTile(transaction: transactions[i] as dynamic),
+      itemBuilder: (_, i) => TransactionTile(transaction: transactions[i]),
     );
   }
 }
